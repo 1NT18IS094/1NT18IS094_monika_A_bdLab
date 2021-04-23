@@ -1,0 +1,920 @@
+monika@monika-VirtualBox:~$ mongoimport --type csv -d heart -c disease -hearderline --drop /home/monika/heart.csv
+*2021-04-20T20:26:26.225+0530	error validating settings: must specify --fields, --fieldFile or --headerline to import this file type
+monika@monika-VirtualBox:~$ mongoimport --type csv -d heart -c disease -headerline --drop /home/monika/heart.csv
+2021-04-20T20:26:56.026+0530	error validating settings: must specify --fields, --fieldFile or --headerline to import this file type
+monika@monika-VirtualBox:~$ mongoimport --type csv -d heart -c disease --headerline --drop /home/monika/heart.csv
+2021-04-20T20:28:02.907+0530	connected to: mongodb://localhost/
+2021-04-20T20:28:02.908+0530	dropping: heart.disease
+*2021-04-20T20:28:03.063+0530	294 document(s) imported successfully. 0 document(s) failed to import.
+monika@monika-VirtualBox:~$ mongo
+*********MongoDB shell version v4.4.4
+***********connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("514d5898-f3db-4f70-a69f-e40ab41fe5e0") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-04-20T19:28:13.438+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-04-20T19:28:17.667+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+*>^C
+bye
+monika@monika-VirtualBox:~$ mongo
+MongoDB shell version v4.4.4
+*connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("94824f1e-faf8-4ec4-a481-7ca35f400de1") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-04-20T19:28:13.438+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-04-20T19:28:17.667+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin   0.000GB
+config  0.000GB
+heart   0.000GB
+local   0.000GB
+mydb    0.000GB
+> show collections
+> use heart
+switched to db heart
+> show collections
+disease
+> db.disease.find().pretty()
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399ffc"),
+	"age" : 28,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 130,
+	"chol" : 132,
+	"fbs" : 0,
+	"restecg" : 2,
+	"thalach" : 185,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399ffd"),
+	"age" : 29,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 140,
+	"chol" : "?",
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 170,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399ffe"),
+	"age" : 30,
+	"sex" : 0,
+	"cp" : 1,
+	"trestbps" : 170,
+	"chol" : 237,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 170,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : 6,
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399fff"),
+	"age" : 29,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 120,
+	"chol" : 243,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 160,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a000"),
+	"age" : 32,
+	"sex" : 0,
+	"cp" : 2,
+	"trestbps" : 105,
+	"chol" : 198,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 165,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a001"),
+	"age" : 32,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 110,
+	"chol" : 225,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 184,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a002"),
+	"age" : 32,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 125,
+	"chol" : 254,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 155,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a003"),
+	"age" : 33,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 120,
+	"chol" : 298,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 185,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a004"),
+	"age" : 31,
+	"sex" : 0,
+	"cp" : 2,
+	"trestbps" : 100,
+	"chol" : 219,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 150,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a005"),
+	"age" : 34,
+	"sex" : 0,
+	"cp" : 2,
+	"trestbps" : 130,
+	"chol" : 161,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 190,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a006"),
+	"age" : 34,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 98,
+	"chol" : 220,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 150,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a007"),
+	"age" : 35,
+	"sex" : 0,
+	"cp" : 1,
+	"trestbps" : 120,
+	"chol" : 160,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 185,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a008"),
+	"age" : 34,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 150,
+	"chol" : 214,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 168,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a009"),
+	"age" : 35,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 120,
+	"chol" : 308,
+	"fbs" : 0,
+	"restecg" : 2,
+	"thalach" : 180,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00a"),
+	"age" : 35,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 150,
+	"chol" : 264,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 168,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00b"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 120,
+	"chol" : 166,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 180,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00c"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 112,
+	"chol" : 340,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 184,
+	"exang" : 0,
+	"oldpeak" : 1,
+	"slope" : 2,
+	"ca" : "?",
+	"thal" : 3,
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00d"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 209,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 178,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00e"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 150,
+	"chol" : 160,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 172,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00f"),
+	"age" : 37,
+	"sex" : 0,
+	"cp" : 2,
+	"trestbps" : 120,
+	"chol" : 260,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 130,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+Type "it" for more
+> db.disease.find({},{age:31,_id:0}).pretty()
+{ "age" : 28 }
+{ "age" : 29 }
+{ "age" : 30 }
+{ "age" : 29 }
+{ "age" : 32 }
+{ "age" : 32 }
+{ "age" : 32 }
+{ "age" : 33 }
+{ "age" : 31 }
+{ "age" : 34 }
+{ "age" : 34 }
+{ "age" : 35 }
+{ "age" : 34 }
+{ "age" : 35 }
+{ "age" : 35 }
+{ "age" : 36 }
+{ "age" : 36 }
+{ "age" : 36 }
+{ "age" : 36 }
+{ "age" : 37 }
+Type "it" for more
+> db.disease.find({"age":29}).pretty()
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399ffd"),
+	"age" : 29,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 140,
+	"chol" : "?",
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 170,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399fff"),
+	"age" : 29,
+	"sex" : 1,
+	"cp" : 2,
+	"trestbps" : 120,
+	"chol" : 243,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 160,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+> db.disease.find({$or:[{"age":28},{"sex":1}]})
+{ "_id" : ObjectId("607eebfb37c34ada1e399ffc"), "age" : 28, "sex" : 1, "cp" : 2, "trestbps" : 130, "chol" : 132, "fbs" : 0, "restecg" : 2, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e399ffd"), "age" : 29, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e399fff"), "age" : 29, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 243, "fbs" : 0, "restecg" : 0, "thalach" : 160, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a001"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 110, "chol" : 225, "fbs" : 0, "restecg" : 0, "thalach" : 184, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a002"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 125, "chol" : 254, "fbs" : 0, "restecg" : 0, "thalach" : 155, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a003"), "age" : 33, "sex" : 1, "cp" : 3, "trestbps" : 120, "chol" : 298, "fbs" : 0, "restecg" : 0, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a006"), "age" : 34, "sex" : 1, "cp" : 2, "trestbps" : 98, "chol" : 220, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a008"), "age" : 34, "sex" : 1, "cp" : 2, "trestbps" : 150, "chol" : 214, "fbs" : 0, "restecg" : 1, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a009"), "age" : 35, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 308, "fbs" : 0, "restecg" : 2, "thalach" : 180, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a00a"), "age" : 35, "sex" : 1, "cp" : 2, "trestbps" : 150, "chol" : 264, "fbs" : 0, "restecg" : 0, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a00b"), "age" : 36, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 166, "fbs" : 0, "restecg" : 0, "thalach" : 180, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a00c"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 112, "chol" : 340, "fbs" : 0, "restecg" : 0, "thalach" : 184, "exang" : 0, "oldpeak" : 1, "slope" : 2, "ca" : "?", "thal" : 3, "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a00d"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 130, "chol" : 209, "fbs" : 0, "restecg" : 0, "thalach" : 178, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a00e"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 150, "chol" : 160, "fbs" : 0, "restecg" : 0, "thalach" : 172, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a012"), "age" : 37, "sex" : 1, "cp" : 2, "trestbps" : 130, "chol" : 283, "fbs" : 0, "restecg" : 1, "thalach" : 98, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a013"), "age" : 37, "sex" : 1, "cp" : 3, "trestbps" : 130, "chol" : 194, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a014"), "age" : 37, "sex" : 1, "cp" : 4, "trestbps" : 120, "chol" : 223, "fbs" : 0, "restecg" : 0, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : 3, "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a015"), "age" : 37, "sex" : 1, "cp" : 4, "trestbps" : 130, "chol" : 315, "fbs" : 0, "restecg" : 0, "thalach" : 158, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a017"), "age" : 38, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 297, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a018"), "age" : 38, "sex" : 1, "cp" : 3, "trestbps" : 145, "chol" : 292, "fbs" : 0, "restecg" : 0, "thalach" : 130, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+Type "it" for more
+> db.disease.find({"cp":{$ne:2}}).pretty()
+{
+	"_id" : ObjectId("607eebfb37c34ada1e399ffe"),
+	"age" : 30,
+	"sex" : 0,
+	"cp" : 1,
+	"trestbps" : 170,
+	"chol" : 237,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 170,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : 6,
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a003"),
+	"age" : 33,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 120,
+	"chol" : 298,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 185,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a007"),
+	"age" : 35,
+	"sex" : 0,
+	"cp" : 1,
+	"trestbps" : 120,
+	"chol" : 160,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 185,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00c"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 112,
+	"chol" : 340,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 184,
+	"exang" : 0,
+	"oldpeak" : 1,
+	"slope" : 2,
+	"ca" : "?",
+	"thal" : 3,
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00d"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 209,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 178,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a00e"),
+	"age" : 36,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 150,
+	"chol" : 160,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 172,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a010"),
+	"age" : 37,
+	"sex" : 0,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 211,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 142,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a011"),
+	"age" : 35,
+	"sex" : 0,
+	"cp" : 4,
+	"trestbps" : 140,
+	"chol" : 167,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 150,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a013"),
+	"age" : 37,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 194,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 150,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a014"),
+	"age" : 37,
+	"sex" : 1,
+	"cp" : 4,
+	"trestbps" : 120,
+	"chol" : 223,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 168,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : 3,
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a015"),
+	"age" : 37,
+	"sex" : 1,
+	"cp" : 4,
+	"trestbps" : 130,
+	"chol" : 315,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 158,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a018"),
+	"age" : 38,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 145,
+	"chol" : 292,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 130,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a019"),
+	"age" : 39,
+	"sex" : 0,
+	"cp" : 3,
+	"trestbps" : 110,
+	"chol" : 182,
+	"fbs" : 0,
+	"restecg" : 1,
+	"thalach" : 180,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a01f"),
+	"age" : 39,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 120,
+	"chol" : 339,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 170,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a020"),
+	"age" : 39,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 160,
+	"chol" : 147,
+	"fbs" : 1,
+	"restecg" : 0,
+	"thalach" : 160,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a021"),
+	"age" : 39,
+	"sex" : 1,
+	"cp" : 4,
+	"trestbps" : 110,
+	"chol" : 273,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 132,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a022"),
+	"age" : 39,
+	"sex" : 1,
+	"cp" : 4,
+	"trestbps" : 130,
+	"chol" : 307,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 140,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a025"),
+	"age" : 40,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 215,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 138,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a026"),
+	"age" : 40,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 130,
+	"chol" : 281,
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 167,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+{
+	"_id" : ObjectId("607eebfb37c34ada1e39a027"),
+	"age" : 40,
+	"sex" : 1,
+	"cp" : 3,
+	"trestbps" : 140,
+	"chol" : "?",
+	"fbs" : 0,
+	"restecg" : 0,
+	"thalach" : 188,
+	"exang" : 0,
+	"oldpeak" : 0,
+	"slope" : "?",
+	"ca" : "?",
+	"thal" : "?",
+	"num" : 0
+}
+Type "it" for more
+> db.disease.find({"trestbps":{$in:[140,167,192]}})
+{ "_id" : ObjectId("607eebfb37c34ada1e399ffd"), "age" : 29, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a011"), "age" : 35, "sex" : 0, "cp" : 4, "trestbps" : 140, "chol" : 167, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a017"), "age" : 38, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 297, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a024"), "age" : 40, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 289, "fbs" : 0, "restecg" : 0, "thalach" : 172, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a027"), "age" : 40, "sex" : 1, "cp" : 3, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 188, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a035"), "age" : 42, "sex" : 1, "cp" : 4, "trestbps" : 140, "chol" : 358, "fbs" : 0, "restecg" : 0, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a045"), "age" : 45, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 224, "fbs" : 1, "restecg" : 0, "thalach" : 122, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a048"), "age" : 45, "sex" : 1, "cp" : 4, "trestbps" : 140, "chol" : 224, "fbs" : 0, "restecg" : 0, "thalach" : 144, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a04a"), "age" : 46, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 275, "fbs" : 0, "restecg" : 0, "thalach" : 165, "exang" : 1, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a050"), "age" : 47, "sex" : 0, "cp" : 2, "trestbps" : 140, "chol" : 257, "fbs" : 0, "restecg" : 0, "thalach" : 135, "exang" : 0, "oldpeak" : 1, "slope" : 1, "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a055"), "age" : 47, "sex" : 1, "cp" : 4, "trestbps" : 140, "chol" : 276, "fbs" : 1, "restecg" : 0, "thalach" : 125, "exang" : 1, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a05e"), "age" : 48, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 238, "fbs" : 0, "restecg" : 0, "thalach" : 118, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a065"), "age" : 49, "sex" : 1, "cp" : 3, "trestbps" : 140, "chol" : 187, "fbs" : 0, "restecg" : 0, "thalach" : 172, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a067"), "age" : 49, "sex" : 1, "cp" : 4, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 130, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a06c"), "age" : 50, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 216, "fbs" : 0, "restecg" : 0, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : 3, "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a06d"), "age" : 50, "sex" : 1, "cp" : 4, "trestbps" : 140, "chol" : 129, "fbs" : 0, "restecg" : 0, "thalach" : 135, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a077"), "age" : 52, "sex" : 0, "cp" : 2, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 140, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a07b"), "age" : 52, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 100, "fbs" : 0, "restecg" : 0, "thalach" : 138, "exang" : 1, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a07d"), "age" : 52, "sex" : 1, "cp" : 3, "trestbps" : 140, "chol" : 259, "fbs" : 0, "restecg" : 1, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("607eebfb37c34ada1e39a080"), "age" : 53, "sex" : 0, "cp" : 2, "trestbps" : 140, "chol" : 216, "fbs" : 0, "restecg" : 0, "thalach" : 142, "exang" : 1, "oldpeak" : 2, "slope" : 2, "ca" : "?", "thal" : "?", "num" : 0 }
+Type "it" for more
+>> db.disease.find({and:[{"age"=38},{"cp"=2}]})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:28
+> db.disease.find({$and:[{"age"=38},{"cp"=2}]})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:29
+> db.disease.find({$and:[{"age":38},{"cp":2}]})
+{ "_id" : ObjectId("6082befe525389e7e4ecee4a"), "age" : 38, "sex" : 0, "cp" : 2, "trestbps" : 120, "chol" : 275, "fbs" : "?", "restecg" : 0, "thalach" : 129, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee4b"), "age" : 38, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : 297, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+
+ db.disease.aggregate([{$match:{"chol":275}},{$group:{_id:"$age"}},{$sort:{"age":-1}}])
+{ "_id" : 65 }
+{ "_id" : 46 }
+{ "_id" : 38 }
+{ "_id" : 48 }
+{ "_id" : 40 }
+> db.disease.aggregate([{$limit:10}])
+{ "_id" : ObjectId("6082befe525389e7e4ecee30"), "age" : 29, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 243, "fbs" : 0, "restecg" : 0, "thalach" : 160, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee31"), "age" : 29, "sex" : 1, "cp" : 2, "trestbps" : 140, "chol" : "?", "fbs" : 0, "restecg" : 0, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee32"), "age" : 30, "sex" : 0, "cp" : 1, "trestbps" : 170, "chol" : 237, "fbs" : 0, "restecg" : 1, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : 6, "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee33"), "age" : 31, "sex" : 0, "cp" : 2, "trestbps" : 100, "chol" : 219, "fbs" : 0, "restecg" : 1, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee34"), "age" : 28, "sex" : 1, "cp" : 2, "trestbps" : 130, "chol" : 132, "fbs" : 0, "restecg" : 2, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee35"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 110, "chol" : 225, "fbs" : 0, "restecg" : 0, "thalach" : 184, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee36"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 125, "chol" : 254, "fbs" : 0, "restecg" : 0, "thalach" : 155, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee37"), "age" : 33, "sex" : 1, "cp" : 3, "trestbps" : 120, "chol" : 298, "fbs" : 0, "restecg" : 0, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee38"), "age" : 34, "sex" : 0, "cp" : 2, "trestbps" : 130, "chol" : 161, "fbs" : 0, "restecg" : 0, "thalach" : 190, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee39"), "age" : 34, "sex" : 1, "cp" : 2, "trestbps" : 150, "chol" : 214, "fbs" : 0, "restecg" : 1, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+> db.disease.find().skip(2)
+{ "_id" : ObjectId("6082befe525389e7e4ecee32"), "age" : 30, "sex" : 0, "cp" : 1, "trestbps" : 170, "chol" : 237, "fbs" : 0, "restecg" : 1, "thalach" : 170, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : 6, "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee33"), "age" : 31, "sex" : 0, "cp" : 2, "trestbps" : 100, "chol" : 219, "fbs" : 0, "restecg" : 1, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee34"), "age" : 28, "sex" : 1, "cp" : 2, "trestbps" : 130, "chol" : 132, "fbs" : 0, "restecg" : 2, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee35"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 110, "chol" : 225, "fbs" : 0, "restecg" : 0, "thalach" : 184, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee36"), "age" : 32, "sex" : 1, "cp" : 2, "trestbps" : 125, "chol" : 254, "fbs" : 0, "restecg" : 0, "thalach" : 155, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee37"), "age" : 33, "sex" : 1, "cp" : 3, "trestbps" : 120, "chol" : 298, "fbs" : 0, "restecg" : 0, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee38"), "age" : 34, "sex" : 0, "cp" : 2, "trestbps" : 130, "chol" : 161, "fbs" : 0, "restecg" : 0, "thalach" : 190, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee39"), "age" : 34, "sex" : 1, "cp" : 2, "trestbps" : 150, "chol" : 214, "fbs" : 0, "restecg" : 1, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3a"), "age" : 34, "sex" : 1, "cp" : 2, "trestbps" : 98, "chol" : 220, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3b"), "age" : 35, "sex" : 0, "cp" : 1, "trestbps" : 120, "chol" : 160, "fbs" : 0, "restecg" : 1, "thalach" : 185, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3c"), "age" : 35, "sex" : 0, "cp" : 4, "trestbps" : 140, "chol" : 167, "fbs" : 0, "restecg" : 0, "thalach" : 150, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3d"), "age" : 35, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 308, "fbs" : 0, "restecg" : 2, "thalach" : 180, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3e"), "age" : 35, "sex" : 1, "cp" : 2, "trestbps" : 150, "chol" : 264, "fbs" : 0, "restecg" : 0, "thalach" : 168, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee3f"), "age" : 36, "sex" : 1, "cp" : 2, "trestbps" : 120, "chol" : 166, "fbs" : 0, "restecg" : 0, "thalach" : 180, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee40"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 112, "chol" : 340, "fbs" : 0, "restecg" : 0, "thalach" : 184, "exang" : 0, "oldpeak" : 1, "slope" : 2, "ca" : "?", "thal" : 3, "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee41"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 130, "chol" : 209, "fbs" : 0, "restecg" : 0, "thalach" : 178, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee42"), "age" : 36, "sex" : 1, "cp" : 3, "trestbps" : 150, "chol" : 160, "fbs" : 0, "restecg" : 0, "thalach" : 172, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee43"), "age" : 37, "sex" : 0, "cp" : 2, "trestbps" : 120, "chol" : 260, "fbs" : 0, "restecg" : 0, "thalach" : 130, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee44"), "age" : 37, "sex" : 0, "cp" : 3, "trestbps" : 130, "chol" : 211, "fbs" : 0, "restecg" : 0, "thalach" : 142, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+{ "_id" : ObjectId("6082befe525389e7e4ecee45"), "age" : 32, "sex" : 0, "cp" : 2, "trestbps" : 105, "chol" : 198, "fbs" : 0, "restecg" : 0, "thalach" : 165, "exang" : 0, "oldpeak" : 0, "slope" : "?", "ca" : "?", "thal" : "?", "num" : 0 }
+Type "it" for more
+> db.disease.find({},{_id:0,"chol":1,"age":1,"trestbps":1})
+{ "age" : 29, "trestbps" : 120, "chol" : 243 }
+{ "age" : 29, "trestbps" : 140, "chol" : "?" }
+{ "age" : 30, "trestbps" : 170, "chol" : 237 }
+{ "age" : 31, "trestbps" : 100, "chol" : 219 }
+{ "age" : 28, "trestbps" : 130, "chol" : 132 }
+{ "age" : 32, "trestbps" : 110, "chol" : 225 }
+{ "age" : 32, "trestbps" : 125, "chol" : 254 }
+{ "age" : 33, "trestbps" : 120, "chol" : 298 }
+{ "age" : 34, "trestbps" : 130, "chol" : 161 }
+{ "age" : 34, "trestbps" : 150, "chol" : 214 }
+{ "age" : 34, "trestbps" : 98, "chol" : 220 }
+{ "age" : 35, "trestbps" : 120, "chol" : 160 }
+{ "age" : 35, "trestbps" : 140, "chol" : 167 }
+{ "age" : 35, "trestbps" : 120, "chol" : 308 }
+{ "age" : 35, "trestbps" : 150, "chol" : 264 }
+{ "age" : 36, "trestbps" : 120, "chol" : 166 }
+{ "age" : 36, "trestbps" : 112, "chol" : 340 }
+{ "age" : 36, "trestbps" : 130, "chol" : 209 }
+{ "age" : 36, "trestbps" : 150, "chol" : 160 }
+{ "age" : 37, "trestbps" : 120, "chol" : 260 }
+Type "it" for more
+
