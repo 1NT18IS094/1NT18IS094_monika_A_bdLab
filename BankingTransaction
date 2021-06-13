@@ -1,0 +1,287 @@
+hdoop@monika-VirtualBox:~$ cd hadoop-3.2.1/sbin/
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+localhost: namenode is running as process 2483.  Stop it first.
+Starting datanodes
+localhost: datanode is running as process 2619.  Stop it first.
+Starting secondary namenodes [monika-VirtualBox]
+monika-VirtualBox: secondarynamenode is running as process 2844.  Stop it first.
+Starting resourcemanager
+resourcemanager is running as process 3033.  Stop it first.
+Starting nodemanagers
+localhost: nodemanager is running as process 3167.  Stop it first.
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ jps
+2483 NameNode
+3033 ResourceManager
+2619 DataNode
+2844 SecondaryNameNode
+4991 Jps
+3167 NodeManager
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ hadoop fs -ls
+Found 5 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-08 17:41 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-08 17:42 empty1.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-10 12:23 input.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-08 18:08 monika
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:25 output
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ cd .
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ cd ..
+hdoop@monika-VirtualBox:~/hadoop-3.2.1$ cd .
+hdoop@monika-VirtualBox:~/hadoop-3.2.1$ cd ..
+hdoop@monika-VirtualBox:~$ cd ~/Desktop/
+hdoop@monika-VirtualBox:~/Desktop$ ls
+BankingTransaction2.jar  BankingTransaction.jar  sales.csv  sales_withoutHeader.csv
+hdoop@monika-VirtualBox:~/Desktop$ hadoop jar BnakingTransaction.jar BankingTransaction.TransactionDriver ^C
+hdoop@monika-VirtualBox:~/Desktop$ hadoop jar BnakingTransaction.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv output1
+JAR does not exist or is not a normal file: /home/hdoop/Desktop/BnakingTransaction.jar
+hdoop@monika-VirtualBox:~/Desktop$ hadoop jar BankingTransaction.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv output1
+2021-06-13 15:29:08,136 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:29:08,425 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:29:08,727 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-06-13 15:29:08,768 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1623567145354_0004
+2021-06-13 15:29:08,936 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:29:09,183 INFO mapreduce.JobSubmitter: Cleaning up the staging area /tmp/hadoop-yarn/staging/hdoop/.staging/job_1623567145354_0004
+org.apache.hadoop.mapred.InvalidInputException: Input path does not exist: hdfs://127.0.0.1:9000/user/hdoop/sales_withoutHeader.csv
+	at org.apache.hadoop.mapred.FileInputFormat.singleThreadedListStatus(FileInputFormat.java:297)
+	at org.apache.hadoop.mapred.FileInputFormat.listStatus(FileInputFormat.java:239)
+	at org.apache.hadoop.mapred.FileInputFormat.getSplits(FileInputFormat.java:325)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeOldSplits(JobSubmitter.java:338)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeSplits(JobSubmitter.java:329)
+	at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:200)
+	at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1570)
+	at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1567)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:1567)
+	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:576)
+	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:571)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:571)
+	at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:562)
+	at org.apache.hadoop.mapred.JobClient.runJob(JobClient.java:873)
+	at BankingTransaction.TransactionDriver.main(TransactionDriver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:323)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+hdoop@monika-VirtualBox:~/Desktop$ hadoop fs -mkdir -p /user/hdoop/sales_withoutHeader.csv
+hdoop@monika-VirtualBox:~/Desktop$ cd .
+hdoop@monika-VirtualBox:~/Desktop$ cd ..
+hdoop@monika-VirtualBox:~$ hadoop fs -mkdir -p /user/hdoop/sales_withoutHeader.csv
+hdoop@monika-VirtualBox:~$ hadoop fs -put sales_withoutHeader.csv /user/hdoop/sales_withoutHeader.csv
+2021-06-13 15:42:06,521 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@monika-VirtualBox:~$ cd hadoop-3.2.1/sbin/
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ hadoop fs -ls
+Found 6 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-08 17:41 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-08 17:42 empty1.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-10 12:23 input.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-08 18:08 monika
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:25 output
+drwxr-xr-x   - hdoop supergroup          0 2021-06-13 15:42 sales_withoutHeader.csv
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ cd .
+hdoop@monika-VirtualBox:~/hadoop-3.2.1/sbin$ cd ..
+hdoop@monika-VirtualBox:~/hadoop-3.2.1$ cd .
+hdoop@monika-VirtualBox:~/hadoop-3.2.1$ cd ..
+hdoop@monika-VirtualBox:~$ cd ~/Desktop/
+hdoop@monika-VirtualBox:~/Desktop$ ls
+BankingTransaction2.jar  BankingTransaction.jar  sales.csv  sales_withoutHeader.csv
+hdoop@monika-VirtualBox:~/Desktop$ hadoop jar BankingTransaction.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv output1
+2021-06-13 15:43:10,354 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:43:10,674 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:43:11,083 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-06-13 15:43:11,141 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1623567145354_0005
+2021-06-13 15:43:11,376 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:43:11,651 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-06-13 15:43:11,790 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:43:11,835 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:43:11,858 INFO mapreduce.JobSubmitter: number of splits:2
+2021-06-13 15:43:12,124 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:43:12,185 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1623567145354_0005
+2021-06-13 15:43:12,185 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-06-13 15:43:12,791 INFO conf.Configuration: resource-types.xml not found
+2021-06-13 15:43:12,792 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-06-13 15:43:13,487 INFO impl.YarnClientImpl: Submitted application application_1623567145354_0005
+2021-06-13 15:43:13,746 INFO mapreduce.Job: The url to track the job: http://monika-VirtualBox:8088/proxy/application_1623567145354_0005/
+2021-06-13 15:43:13,752 INFO mapreduce.Job: Running job: job_1623567145354_0005
+2021-06-13 15:43:26,122 INFO mapreduce.Job: Job job_1623567145354_0005 running in uber mode : false
+2021-06-13 15:43:26,125 INFO mapreduce.Job:  map 0% reduce 0%
+2021-06-13 15:43:35,609 INFO mapreduce.Job:  map 100% reduce 0%
+2021-06-13 15:43:43,715 INFO mapreduce.Job:  map 100% reduce 100%
+2021-06-13 15:43:44,770 INFO mapreduce.Job: Job job_1623567145354_0005 completed successfully
+2021-06-13 15:43:45,080 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=101
+		FILE: Number of bytes written=677268
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=471
+		HDFS: Number of bytes written=37
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=13396
+		Total time spent by all reduces in occupied slots (ms)=4498
+		Total time spent by all map tasks (ms)=13396
+		Total time spent by all reduce tasks (ms)=4498
+		Total vcore-milliseconds taken by all map tasks=13396
+		Total vcore-milliseconds taken by all reduce tasks=4498
+		Total megabyte-milliseconds taken by all map tasks=13717504
+		Total megabyte-milliseconds taken by all reduce tasks=4605952
+	Map-Reduce Framework
+		Map input records=7
+		Map output records=7
+		Map output bytes=81
+		Map output materialized bytes=107
+		Input split bytes=264
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=107
+		Reduce input records=7
+		Reduce output records=4
+		Spilled Records=14
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=454
+		CPU time spent (ms)=2450
+		Physical memory (bytes) snapshot=701001728
+		Virtual memory (bytes) snapshot=7582756864
+		Total committed heap usage (bytes)=604504064
+		Peak Map Physical memory (bytes)=290222080
+		Peak Map Virtual memory (bytes)=2524946432
+		Peak Reduce Physical memory (bytes)=184217600
+		Peak Reduce Virtual memory (bytes)=2533388288
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=207
+	File Output Format Counters 
+		Bytes Written=37
+hdoop@monika-VirtualBox:~/Desktop$ hadoop fs -ls output1
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-06-13 15:43 output1/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         37 2021-06-13 15:43 output1/part-00000
+hdoop@monika-VirtualBox:~/Desktop$ hadoop fs -cat output1/part-00000
+2021-06-13 15:48:52,042 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Disha	1
+Mahesh	3
+Prashanth	2
+Ramya	1
+hdoop@monika-VirtualBox:~/Desktop$ hadoop jar BankingTransaction2.jar BankingTransaction.TransactionDriver sales_withoutHeader.csv output2
+2021-06-13 15:50:35,620 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:50:36,288 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-06-13 15:50:36,795 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-06-13 15:50:36,889 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1623567145354_0006
+2021-06-13 15:50:37,117 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:50:37,406 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-06-13 15:50:37,500 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:50:38,011 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:50:38,059 INFO mapreduce.JobSubmitter: number of splits:2
+2021-06-13 15:50:38,324 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-06-13 15:50:38,409 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1623567145354_0006
+2021-06-13 15:50:38,413 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-06-13 15:50:38,996 INFO conf.Configuration: resource-types.xml not found
+2021-06-13 15:50:38,998 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-06-13 15:50:39,232 INFO impl.YarnClientImpl: Submitted application application_1623567145354_0006
+2021-06-13 15:50:39,409 INFO mapreduce.Job: The url to track the job: http://monika-VirtualBox:8088/proxy/application_1623567145354_0006/
+2021-06-13 15:50:39,414 INFO mapreduce.Job: Running job: job_1623567145354_0006
+2021-06-13 15:50:50,693 INFO mapreduce.Job: Job job_1623567145354_0006 running in uber mode : false
+2021-06-13 15:50:50,697 INFO mapreduce.Job:  map 0% reduce 0%
+2021-06-13 15:50:58,901 INFO mapreduce.Job:  map 100% reduce 0%
+2021-06-13 15:51:06,009 INFO mapreduce.Job:  map 100% reduce 100%
+2021-06-13 15:51:06,066 INFO mapreduce.Job: Job job_1623567145354_0006 completed successfully
+2021-06-13 15:51:06,316 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=101
+		FILE: Number of bytes written=677268
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=471
+		HDFS: Number of bytes written=52
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=12620
+		Total time spent by all reduces in occupied slots (ms)=3817
+		Total time spent by all map tasks (ms)=12620
+		Total time spent by all reduce tasks (ms)=3817
+		Total vcore-milliseconds taken by all map tasks=12620
+		Total vcore-milliseconds taken by all reduce tasks=3817
+		Total megabyte-milliseconds taken by all map tasks=12922880
+		Total megabyte-milliseconds taken by all reduce tasks=3908608
+	Map-Reduce Framework
+		Map input records=7
+		Map output records=7
+		Map output bytes=81
+		Map output materialized bytes=107
+		Input split bytes=264
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=4
+		Reduce shuffle bytes=107
+		Reduce input records=7
+		Reduce output records=4
+		Spilled Records=14
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=407
+		CPU time spent (ms)=2180
+		Physical memory (bytes) snapshot=646496256
+		Virtual memory (bytes) snapshot=7578038272
+		Total committed heap usage (bytes)=546308096
+		Peak Map Physical memory (bytes)=234508288
+		Peak Map Virtual memory (bytes)=2525310976
+		Peak Reduce Physical memory (bytes)=184639488
+		Peak Reduce Virtual memory (bytes)=2528747520
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=207
+	File Output Format Counters 
+		Bytes Written=52
+hdoop@monika-VirtualBox:~/Desktop$ hadoop fs -ls output2
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-06-13 15:51 output2/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         52 2021-06-13 15:51 output2/part-00000
+hdoop@monika-VirtualBox:~/Desktop$ hadoop fs -cat output2/part-00000
+2021-06-13 15:51:42,110 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Disha	12000
+Mahesh	8000
+Prashanth	15000
+Ramya	14000
+hdoop@monika-VirtualBox:~/Desktop$ 
+
+
